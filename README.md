@@ -6,7 +6,10 @@ This repository contains information that i found useful while setting up and cr
 1. [Linux](#linux)
     1. [Writing Tapes](#linuxwritetapes)
     2. [Reading Tapes](#linuxreadtapes)
-    3. [Troubleshooting](#linuxtroubleshooting)
+    3. [Wiping Tapes](#linuxwiping)
+    4. [Troubleshooting](#linuxtroubleshooting)
+    5. [Backup Shell Script](backup-script.sh)
+    
 2. [Windows](#windows)
     1. [Troubleshooting](#windowstroubleshooting)
 
@@ -22,6 +25,12 @@ This repository contains information that i found useful while setting up and cr
 - /home/database is the directory that is being backed up to tape.
 
 ### [Reading Tapes](#linuxreadtapes)
+
+```tar tvf /dev/st0```
+
+### [Wiping Tapes](#linuxwiping)
+
+```mt -f /dev/st0 erase```
 
 ### [Troubleshooting](#linuxtroubleshooting)
 ```dmesg | grep st```

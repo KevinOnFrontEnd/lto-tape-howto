@@ -25,8 +25,11 @@ This repository contains information that i found useful while setting up and cr
 - /home/database is the directory that is being backed up to tape.
 
 ### [Reading Tapes](#linuxreadtapes)
-
+See file files are stored on the tape.
 ```tar tvf /dev/st0```
+
+Restoring to a directory.
+```tar tvf /dev/st0 -C /PATH/TO/RESTORE/BACKUP```
 
 ### [Wiping Tapes](#linuxwiping)
 

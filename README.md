@@ -5,6 +5,7 @@ This repository contains information that i found useful while setting up and cr
 # Table of Contents
 1. [Linux](#linux)
     1. [Writing Tapes](#linuxwritetapes)
+    1. [Writing Encrypted Tapes](#linuxwritingencryptedtapes)
     2. [Reading Tapes](#linuxreadtapes)
     3. [Wiping Tapes](#linuxwiping)
     4. [Troubleshooting](#linuxtroubleshooting)
@@ -24,12 +25,23 @@ This repository contains information that i found useful while setting up and cr
 - /dev/st0 is the tape device
 - /home/database is the directory that is being backed up to tape.
 
+### [Writing Encrypted Tapes](#linuxwritingencryptedtapes)
+```sudo tar cvf - Directory/ | gpg --symmetric --cipher-algo AES256 | sudo dd of=/dev/st0 bs=64k status=progress```
+
 ### [Reading Tapes](#linuxreadtapes)
-See file files are stored on the tape.
+See files that are stored on the tape.
+
 ```tar tvf /dev/st0```
 
 Restoring to a directory.
+
 ```tar tvf /dev/st0 -C /PATH/TO/RESTORE/BACKUP```
+
+### [Reading Encrypted Tapes](#linuxreadencryptedtapes)
+See file files are stored on the tape.
+
+```sudo dd if=/dev/st0 bs=64k | gpg --decrypt | tar xvf - ```
+
 
 ### [Wiping Tapes](#linuxwiping)
 

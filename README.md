@@ -7,6 +7,7 @@ This repository contains information that i found useful while setting up and cr
     1. [Writing Tapes](#linuxwritetapes)
     1. [Writing Encrypted Tapes](#linuxwritingencryptedtapes)
     2. [Reading Tapes](#linuxreadtapes)
+    2. [Reading Encrypted Tapes](#linuxreadencryptedtapes)
     3. [Wiping Tapes](#linuxwiping)
     4. [Troubleshooting](#linuxtroubleshooting)
     5. [Backup Shell Script](backup-script.sh)

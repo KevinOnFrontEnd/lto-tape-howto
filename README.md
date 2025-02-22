@@ -26,6 +26,13 @@ This repository contains information that i found useful while setting up and cr
 - /dev/st0 is the tape device
 - /home/database is the directory that is being backed up to tape.
 
+or 
+
+**writing tape in filename order**
+
+```find . -type f | sort | tar -cvf /dev/st0 -T -```
+
+
 ### [Writing Encrypted Tapes](#linuxwritingencryptedtapes)
 ```sudo tar cvf - Directory/ | gpg --symmetric --cipher-algo AES256 | sudo dd of=/dev/st0 bs=64k status=progress```
 

@@ -33,6 +33,7 @@ or
 ```find . -type f | sort | tar -cvf /dev/st0 -T -```
 
 **Avoiding shoe shining**
+
 Shoe shining (also called backhitching) is when a tape drive constantly stops, rewinds a bit, and starts again because it's not receiving data fast enough to keep streaming steadily.
 
 ```tar -cf - . | sudo mbuffer -m 1G -P 100 -s 256k -o /dev/st0```

@@ -32,6 +32,23 @@ or
 
 ```find . -type f | sort | tar -cvf /dev/st0 -T -```
 
+**Avoiding shoe shining**
+Shoe shining (also called backhitching) is when a tape drive constantly stops, rewinds a bit, and starts again because it's not receiving data fast enough to keep streaming steadily.
+
+```tar -cf - . | sudo mbuffer -m 1G -P 100 -s 256k -o /dev/st0```
+
+📋 What it does:
+
+- Creates a tar archive of the current directory (.) and sends it to standard output (-cf -).
+- Pipes the output through mbuffer, a memory buffer tool that smooths out disk/tape write speeds.
+- Writes the buffered stream to an LTO-7 tape drive (device /dev/st0).
+
+💡 Why this setup is good for LTO-7:
+- mbuffer prevents underruns that can reduce tape streaming speed and longevity.
+- -m 1G: Uses 1 GB of memory buffer — great for LTO-7’s high streaming speeds (~300 MB/s native).
+- -P 100: Shows progress every 100 operations (helps with monitoring).
+- -s 256k: Block size of 256 KB, which balances performance and compatibility with LTO-7 drives.
+- -o /dev/st0: Sends the output to the tape device.
 
 ### [Writing Encrypted Tapes](#linuxwritingencryptedtapes)
 ```sudo tar cvf - Directory/ | gpg --symmetric --cipher-algo AES256 | sudo dd of=/dev/st0 bs=64k status=progress```
